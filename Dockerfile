@@ -6,7 +6,9 @@ RUN apk add --no-cache \
   php8-gmp php8-json php8-dom php8-pdo php8-zip php8-mysqli php8-sqlite3 \
   php8-pdo_pgsql php8-bcmath php8-gd php8-pdo_mysql php8-pdo_sqlite \
   php8-gettext php8-xmlreader php8-iconv php8-curl php8-ctype php8-phar \
-  php8-fileinfo php8-mbstring php8-tokenizer php8-simplexmlCOPY --from=composer:latest  /usr/bin/composer /usr/bin/composer
+  php8-fileinfo php8-mbstring php8-tokenizer php8-simplexml
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 USER container
 ENV  USER container
