@@ -1,7 +1,8 @@
 FROM alpine:3.18
 
-RUN apk --update --no-cache add curl ca-certificates nginx
-# ...existing code...
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/v3.18/community" >> /etc/apk/repositories \
+    && apk --update --no-cache add curl ca-certificates nginx
+
 RUN apk add \
     php8 \
     php8-xml \
@@ -36,7 +37,7 @@ RUN apk add \
     php8-mbstring \
     php8-tokenizer \
     php8-simplexml
-# ...existing code...
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 USER container
