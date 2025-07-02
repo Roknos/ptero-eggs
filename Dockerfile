@@ -1,42 +1,42 @@
-FROM alpine:3.18
+FROM alpine:3.20
 
-RUN echo "https://dl-cdn.alpinelinux.org/alpine/v3.18/community" >> /etc/apk/repositories \
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/v3.20/community" >> /etc/apk/repositories \
     && apk --update --no-cache add curl ca-certificates nginx
 
 RUN apk add \
-    php8 \
-    php8-xml \
-    php8-exif \
-    php8-fpm \
-    php8-session \
-    php8-soap \
-    php8-openssl \
-    php8-gmp \
-    php8-pdo_odbc \
-    php8-json \
-    php8-dom \
-    php8-pdo \
-    php8-zip \
-    php8-mysqli \
-    php8-sqlite3 \
-    php8-pdo_pgsql \
-    php8-bcmath \
-    php8-gd \
-    php8-odbc \
-    php8-pdo_mysql \
-    php8-pdo_sqlite \
-    php8-gettext \
-    php8-xmlreader \
-    php8-bz2 \
-    php8-iconv \
-    php8-pdo_dblib \
-    php8-curl \
-    php8-ctype \
-    php8-phar \
-    php8-fileinfo \
-    php8-mbstring \
-    php8-tokenizer \
-    php8-simplexml
+    php83 \
+    php83-xml \
+    php83-exif \
+    php83-fpm \
+    php83-session \
+    php83-soap \
+    php83-openssl \
+    php83-gmp \
+    php83-json \
+    php83-dom \
+    php83-pdo \
+    php83-zip \
+    php83-mysqli \
+    php83-sqlite3 \
+    php83-pdo_pgsql \
+    php83-bcmath \
+    php83-gd \
+    php83-pdo_mysql \
+    php83-pdo_sqlite \
+    php83-gettext \
+    php83-xmlreader \
+    php83-bz2 \
+    php83-iconv \
+    php83-curl \
+    php83-ctype \
+    php83-phar \
+    php83-fileinfo \
+    php83-mbstring \
+    php83-tokenizer \
+    php83-simplexml
+
+# The following extensions are not available for php83 in Alpine 3.20:
+# php83-pdo_odbc, php83-odbc, php83-pdo_dblib
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -46,6 +46,5 @@ ENV HOME /home/container
 
 WORKDIR /home/container
 COPY ./entrypoint.sh /entrypoint.sh
-
 
 CMD ["/bin/ash", "/entrypoint.sh"]
