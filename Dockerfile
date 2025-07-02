@@ -33,7 +33,10 @@ RUN apk add \
     php83-fileinfo \
     php83-mbstring \
     php83-tokenizer \
-    php83-simplexml
+    php83-simplexml \
+    php83-posix \
+    php83-intl \
+    php83-opcache
 
 # The following extensions are not available for php83 in Alpine 3.20:
 # php83-pdo_odbc, php83-odbc, php83-pdo_dblib
